@@ -1,0 +1,24 @@
+<nav id="site-navigation" class="main-navigation" role="navigation">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="menu-new-container">
+					<ul id="sitemenu" class="menu">
+						<li class="menu-item"><a href="<?php echo $this->url('site/default'); ?>">Início</a></li>
+						<li class="menu-item"><a href="<?php echo $this->url('site/default', array('controller' => 'download')); ?>">Download</a></li>
+						<?php if (! $this->identity): ?><li class="menu-item"><a href="<?php echo $this->url('site/default', array('controller' => 'cadastro')); ?>">Cadastro</a></li><?php endif; ?>
+                        <li class="menu-item"><a href="javascript:void(0);">Rankings</a>
+                            <ul class="sub-menu">
+                            	<li class="menu-item"><a href="<?php echo $this->url('site/default', array('controller' => 'ranking', 'action' => 'personagem')); ?>">Personagens</a></li>
+                            	<li class="menu-item"><a href="<?php echo $this->url('site/default', array('controller' => 'ranking', 'action' => 'cla')); ?>">Clãs</a></li>
+                            </ul>
+                        </li>
+						<li class="menu-item"><a href="<?php echo $this->url('site/default', array('controller' => 'doacao')); ?>">Doação</a></li>
+						<li class="menu-item"><a href="<?php echo $this->url('site/default', array('controller' => 'loja')); ?>">Loja</a></li>
+						<li class="menu-item"><a href="http://forum.systemgunz.com/" target="_blank">Fórum</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>

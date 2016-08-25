@@ -1,0 +1,21 @@
+<?php $this->headTitle('Ranking de personagens'); ?>
+
+<div class="col-md-12">
+	<div id="primary" class="content-area">
+		<main class="site-main" role="main">
+		<article class="post">
+			<header class="entry-header">
+				<h1 class="entry-title">Ranking de personagens</h1>
+			</header>
+			<div class="entry-summary">
+				<div id="dataTable"></div>
+			</div>
+		</article>
+		</main>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery('#dataTable').zfTable();
+});
+</script>

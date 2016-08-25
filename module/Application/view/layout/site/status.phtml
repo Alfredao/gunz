@@ -1,0 +1,34 @@
+<div class="col-md-4">
+	<div id="secondary" class="widget-area" role="complementary">
+		<aside class="widget">
+			<h1 class="widget-title">Status</h1>
+			<table class="table">
+				<tr>
+					<th>Status</th>
+					<td><?php echo $this->serverStatus('web.systemgunz.com', 6000); ?></td>
+				</tr>
+				<tr>
+					<th>Jogadores online</th>
+					<td><?php echo $this->serverStatusTotal; ?></td>
+				</tr>
+				<tr>
+					<th>Recorde online</th>
+					<td><?php echo $this->recordeOnline; ?></td>
+				</tr>
+				<tr>
+					<th>Contas</th>
+					<td><?php echo $this->accountTotal; ?></td>
+				</tr>
+				<tr>
+					<th>Personagens</th>
+					<td><?php echo $this->characterTotal; ?></td>
+				</tr>
+				<tr>
+					<th>Clãs</th>
+					<td><?php echo $this->clanTotal; ?></td>
+				</tr>
+			</table>
+		</aside>
+    	<?php echo $this->render('layout/site/like-box'); ?>
+	</div>
+</div>

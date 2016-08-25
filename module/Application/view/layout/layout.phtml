@@ -1,0 +1,218 @@
+<?php echo $this->doctype(); ?>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<?php echo $this->headTitle('SystemGunz')->setSeparator(' - ')->setAutoEscape(false); ?>
+
+    <?php
+    echo $this->headLink()
+        ->appendStylesheet('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+        ->appendStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+        ->appendStylesheet($this->basePath('/site/assets/css/style.css'))
+        ->appendStylesheet($this->basePath('/site/assets/css/theme.css'))
+
+    ?>
+
+    <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+    <script type='text/javascript' src='https://code.jquery.com/jquery-migrate-1.2.1.min.js'></script>
+    <script type='text/javascript' src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+    <script type='text/javascript' src='/site/assets/js/plugins/bootbox/bootbox.min.js'></script>
+
+    <script type='text/javascript' src='/site/assets/js/zf-table.js'></script>
+
+
+<body class="blog group-blog">
+
+	<div id="fb-root"></div>
+	<script>
+    	(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.5&appId=1513783788852785";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+	<div id="page" class="hfeed site">
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+		<header id="masthead" class="site-header" role="banner">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<div class="site-branding">
+							<h1 class="site-title">
+								<a href="<?php echo $this->url('site/default'); ?>"
+									title="devion" rel="home"> <img alt="logo"
+									src="http://puu.sh/kFqnl/47ae499e0c.png" height="30"
+									width="200">
+								</a>
+							</h1>
+							<!-- <h2 class="site-description">Cereal matinal, barbaridade tchê!</h2> -->
+						</div>
+					</div>
+                	<?php if ($this->identity): ?>
+                		<?php echo $this->render('layout/site/account'); ?>
+                	<?php else: ?>
+                		<?php echo $this->render('layout/site/login'); ?>
+                	<?php endif;?>
+				</div>
+			</div>
+			<?php echo $this->render('layout/site/navigation'); ?>
+		</header>
+
+		<div class="site-content">
+			<div class="container">
+				<p>&nbsp;</p>
+				<div class="row">
+        			<?php echo $this->displayMessage(); ?>
+					<?php echo $this->content; ?>
+				</div>
+			</div>
+
+		</div>
+		<!-- #content -->
+		<div id="footer-widgets">
+			<div class="container">
+				<div class="row">
+					<aside class="footer-widget col-md-3 widget_text">
+						<h1 class="widget-title">Sobre nós</h1>
+						<div class="textwidget">
+							<p>Todos os direitos reservados.</p>
+							<p>Gunz é uma marca registrada pela Maiet Entertainment</p>
+							<p>SystemGunz é um servidor totalmente gratuito, as doações são
+								utilizadas para cobrir os gastos do servidor.</p>
+						</div>
+					</aside>
+					<aside class="footer-widget col-md-3 widget_text">
+						<h1 class="widget-title">Equipe</h1>
+						<ul>
+							<li>Alfredao</li>
+							<li>Tirrom</li>
+							<li>Stuart</li>
+							<li>Cereal</li>
+							<li>Bigorna</li>
+							<li>noitoMe</li>
+						</ul>
+					</aside>
+					<aside class="footer-widget col-md-3 widget_text">
+						<h1 class="widget-title">Fale conosco</h1>
+						<ul>
+							<li><a href="javascript:void(0);">Mensagem</a></li>
+							<li><a href="http://www.facebook.com/systemgunz" target="_blank">Facebook</a></li>
+						</ul>
+					</aside>
+				</div>
+			</div>
+		</div>
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="site-info">
+							SystemGunz &copy; 2008-<?php echo date('Y'); ?>
+						</div>
+						<!-- .site-info -->
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- #colophon -->
+
+		<div id="progress" class="waiting">
+			<dt></dt>
+			<dd></dd>
+		</div>
+
+	</div>
+	<!-- #page -->
+
+	<script>
+	$(document).ready(function() {
+
+		$(document).ajaxStart(function() {
+            $('#progress').removeClass('done').css({
+                'width' : '30%'
+            });
+		});
+
+		$(document).ajaxStop(function() {
+            $('#progress').css({
+                'width' : '100%'
+            }).addClass('done', function() {
+                $(this).css({
+                    'width' : '0%'
+                });
+            });
+		});
+
+		$.sgAjax = function() {
+
+			var ajax = $.ajax.apply(this, arguments);
+
+			ajax.always(function() {
+				if (ajax.status == 302) {
+					bootbox.alert('Usuário sem permissão de acesso', function() {
+						$(location).attr('href', '/');
+					});
+				} else if (ajax.status == 401) {
+					bootbox.alert('Por favor, faça o login para continuar', function() {
+						$(location).attr('href', '/login/autenticar/');
+					});
+				}
+			});
+
+			ajax.error(function() {
+				bootbox.alert('Erro desconhecido. Entre em contato com um administrador');
+			});
+
+			return ajax;
+		};
+
+		// app
+		$('[data-toggle="tooltip"]').tooltip();
+		$('input').attr('autocomplete', 'off');
+
+		// login
+		$(document).on('submit', '#login-form', function(e) {
+
+			e.preventDefault();
+
+			var $form = $(this);
+
+			var ajax = $.sgAjax({
+				'type' : 'POST',
+				'url' : '/login/autenticar',
+				'data' : $(this).serialize(),
+				'dataType' : 'json',
+			});
+
+			ajax.done(function(r) {
+				if (r.erro == 0) {
+					$(location).attr('href', r.url);
+				} else {
+					bootbox.alert(r.mensagem, function() {
+						$form.find('input[type=password]').val('').focus();
+					});
+				}
+			});
+
+			return false;
+		});
+
+	});
+	</script>
+	<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-49590101-4', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+</body>
+</html>

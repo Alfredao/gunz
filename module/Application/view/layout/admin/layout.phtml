@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- META SECTION -->
+        <title>SystemGunz</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="icon" href="/admin/favicon.ico" type="image/x-icon" />
+        <!-- END META SECTION -->
+
+        <!-- CSS INCLUDE -->
+        <link rel="stylesheet" type="text/css" id="theme" href="/admin/css/theme-default.css"/>
+        <!-- EOF CSS INCLUDE -->
+
+		<!-- START PLUGINS -->
+        <script type="text/javascript" src="/admin/js/plugins/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/admin/js/plugins/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/admin/js/plugins/bootstrap/bootstrap.min.js"></script>
+
+		<script type="text/javascript" src="/admin/js/zf-table.js"></script>
+        <!-- END PLUGINS -->
+    </head>
+    <body>
+        <!-- START PAGE CONTAINER -->
+        <div class="page-container">
+
+            <!-- START PAGE SIDEBAR -->
+            <div class="page-sidebar">
+                <!-- START X-NAVIGATION -->
+                <ul class="x-navigation">
+                    <li class="xn-logo">
+                        <a href="<?php echo $this->url('admin/default', array('controller' => 'index')); ?>">SYSTEMGUNZ</a>
+                        <a href="#" class="x-navigation-control"></a>
+                    </li>
+                    <li class="xn-title">Navegação</li>
+                    <li>
+                        <a href="<?php echo $this->url('admin/default', array('controller' => 'index')); ?>"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
+                    </li>
+					<li class="xn-title">Painel de controle</li>
+                    <li>
+                        <a href="<?php echo $this->url('admin/default', array('controller' => 'server-status')); ?>"><span class="fa fa-server"></span> <span class="xn-text">Servidores</span></a>
+                    </li>
+					<li class="xn-title">Cadastros</li>
+                    <li>
+                        <a href="<?php echo $this->url('admin/default', array('controller' => 'account')); ?>"><span class="fa fa-user"></span> <span class="xn-text">Usuários</span></a>
+                        <a href="<?php echo $this->url('admin/default', array('controller' => 'character')); ?>"><span class="fa fa-male"></span> <span class="xn-text">Personagens</span></a>
+                        <a href="<?php echo $this->url('admin/default', array('controller' => 'clan')); ?>"><span class="fa fa-flag"></span> <span class="xn-text">Clãs</span></a>
+                    </li>
+					<li class="xn-title">Lojas</li>
+					<li class="xn-openable">
+                        <a href="#"><span class="fa fa-shopping-cart"></span> Lojas</a>
+                        <ul>
+                            <li><a href="<?php echo $this->url('admin/default', array('controller' => 'shop-category')); ?>"><span class="fa fa-list-alt"></span> <span class="xn-text">Categorias</span></a></li>
+                            <li><a href="<?php echo $this->url('admin/default', array('controller' => 'loja')); ?>"><span class="fa fa-shield"></span> <span class="xn-text">Produtos</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- END X-NAVIGATION -->
+            </div>
+            <!-- END PAGE SIDEBAR -->
+
+            <!-- PAGE CONTENT -->
+            <div class="page-content">
+
+                <!-- START X-NAVIGATION VERTICAL -->
+				<ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+                    <!-- TOGGLE NAVIGATION -->
+                    <li class="xn-icon-button">
+                        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+                    </li>
+                    <!-- END TOGGLE NAVIGATION -->
+                    <!-- SEARCH -->
+                    <li class="xn-search">
+                        <form role="form">
+                            <input type="text" name="search" placeholder="Pesquisar...">
+                        </form>
+                    </li>
+                    <!-- END SEARCH -->
+                    <!-- POWER OFF -->
+                    <li class="xn-icon-button pull-right last">
+                        <a href="#"><span class="fa fa-power-off"></span></a>
+                        <ul class="xn-drop-left animated zoomIn">
+                            <li><a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sair</a></li>
+                        </ul>
+                    </li>
+                    <!-- END POWER OFF -->
+                    <!-- LANG BAR -->
+                    <li class="xn-icon-button pull-right">
+                        <a href="#"><span class="flag flag-br"></span></a>
+                        <ul class="xn-drop-left xn-drop-white animated zoomIn">
+                            <li><a href="#"><span class="flag flag-br"></span> Português (BR)</a></li>
+                        </ul>
+                    </li>
+                    <!-- END LANG BAR -->
+                </ul>
+                <!-- END X-NAVIGATION VERTICAL -->
+
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb">
+                    <li class="active">System Gunz</li>
+                </ul>
+                <!-- END BREADCRUMB -->
+
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap">
+
+                    <div class="row">
+                        <div class="col-md-12">
+							<?php echo $this->content; ?>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- END PAGE CONTENT WRAPPER -->
+            </div>
+            <!-- END PAGE CONTENT -->
+        </div>
+        <!-- END PAGE CONTAINER -->
+
+        <!-- MESSAGE BOX-->
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-sign-out"></span> Sa<strong>ir</strong>?</div>
+                    <div class="mb-content">
+                        <p>Tem certeza que deseja sair do sistema?</p>
+                        <p>Pressione <strong>NÃO</strong> caso queira continuar trabalhando. Pressione <strong>SIM</strong> para desconectar.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <a href="/" class="btn btn-success btn-lg">Sim</a>
+                            <button class="btn btn-default btn-lg mb-control-close">Não</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END MESSAGE BOX-->
+
+        <!-- START PRELOADS -->
+        <audio id="audio-alert" src="/admin/audio/alert.mp3" preload="auto"></audio>
+        <audio id="audio-fail" src="/admin/audio/fail.mp3" preload="auto"></audio>
+        <!-- END PRELOADS -->
+
+    <!-- START SCRIPTS -->
+        <!-- THIS PAGE PLUGINS -->
+
+        <!-- END PAGE PLUGINS -->
+
+        <!-- START TEMPLATE -->
+        <script type="text/javascript" src="/admin/js/plugins.js"></script>
+        <script type="text/javascript" src="/admin/js/actions.js"></script>
+        <!-- END TEMPLATE -->
+    <!-- END SCRIPTS -->
+
+    <!-- COUNTERS // NOT INCLUDED IN TEMPLATE -->
+        <!-- GOOGLE -->
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-49590101-4', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+        <!-- END GOOGLE -->
+    <!-- END COUNTERS // NOT INCLUDED IN TEMPLATE -->
+
+    </body>
+</html>
+
+
+
+
+
+

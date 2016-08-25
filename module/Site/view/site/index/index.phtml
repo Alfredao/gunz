@@ -1,0 +1,53 @@
+<?php $this->headTitle('Início'); ?>
+
+<div class="col-md-8">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+		<article class="post">
+
+			<header class="entry-header">
+				<h1 class="entry-title">O retorno...</h1>
+			</header>
+
+			<div class="entry-summary">
+				<img alt="o-retorno" src="/images/banners/2015-11-10-retorno.png">
+			</div>
+		</article>
+		</main>
+	</div>
+</div>
+
+<?php echo $this->render('layout/site/status'); ?>
+
+<div id="videos-container">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-12">
+				<h2 class="section-title">Últimos itens da loja</h2>
+			</div>
+
+			<?php for ($i = 1; $i <= 12; $i++): ?>
+			<div class="col-md-2 col-xs-6">
+				<div class="latvideo">
+					<a href="#"><img
+						src="http://dummyimage.com/200x150/666/FFF"
+						alt="item_nome" /></a>
+					<div class="latvideo-entry">
+
+						<h3>
+							<a href="#">Item #<?php echo $i; ?></a>
+						</h3>
+						<div class="entry-meta">
+							<span class="like-count"> 50 </span>
+						</div>
+						<!-- .entry-meta -->
+
+					</div>
+
+				</div>
+			</div>
+			<?php endfor; ?>
+		</div>
+	</div>
+</div>

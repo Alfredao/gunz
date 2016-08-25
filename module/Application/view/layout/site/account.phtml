@@ -1,0 +1,37 @@
+<div class="col-xs-12 col-sm-6 account-login">
+	<ul class="nav navbar-nav navbar-right">
+		<li><a href="<?php echo $this->url('site/default', array('controller' => 'loja', 'action' => 'carrinho')); ?>"><span class="glyphicon glyphicon-shopping-cart"></span> Meu carrinho (4)</a></li>
+		<li class="dropdown"><a href="#" class="dropdown-toggle"
+			data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>
+				<strong><?php echo $this->identity->getAccount()->getFirstName(); ?></strong>
+				<span class="glyphicon glyphicon-chevron-down"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<div class="navbar-login">
+						<div class="row">
+							<div class="col-lg-4">
+								<p class="text-center">
+									<span class="glyphicon glyphicon-user icon-size"></span>
+								</p>
+							</div>
+							<div class="col-lg-8">
+								<p class="text-left">
+									<strong><?php echo $this->identity->getAccount()->getName(); ?></strong>
+								</p>
+								<p class="text-left small"><?php echo $this->identity->getAccount()->getEmail(); ?></p>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="divider navbar-login-session-bg"></li>
+				<li><a href="<?php echo $this->url('site/default', array('controller' => 'minha-conta')); ?>">Configurações <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+				<li class="divider"></li>
+				<li><a href="#">Minhas estatísticas <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+				<li class="divider"></li>
+				<li><a href="#">Mensagens <span class="badge pull-right"> 42 </span></a></li>
+				<li class="divider"></li>
+				<li><a href="<?php echo $this->url('login/logout'); ?>">Sair <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+			</ul></li>
+	</ul>
+</div>
